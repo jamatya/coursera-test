@@ -1,30 +1,17 @@
 (function() { //iife: immediately-invoked function expression
   'use strict';
 
-  angular.module('NameCalculator', [])
-    .controller('NameCalculatorCtrl', function($scope){
-        $scope.name="";
-        $scope.totalValue = 0;
+  angular.module('DIApp', [])
+  //.controller('DIController', ['$scope', '$filter', DIController]);
+  .controller('DIController', DIController);
 
-        $scope.displayNumeric = function(){
-            var totalNameValue = calculateNumericForString($scope.name);
-            $scope.totalValue = totalNameValue;
-        };
-    });
+  DIController.$inject = ['$scope', '$filter'];
+  function DIController($scope, $filter){
+    $scope.name = "Jen";
 
-    function calculateNumericForString(string){
-      var totalStringValue = 0;
-      for(var i=0; i<string.length;i++){
-        totalStringValue += string.charCodeAt(i);
-      }
-      return totalStringValue;
-    }
-
-/*  angular.module('myFirstApp', [])
-  .controller('MyFirstController', function($scope){ //share data between view and view model
-      $scope.name = "Jen";
-      $scope.sayHello = function(){
-        return "Hello Coursera";
-      };
-  });*/
+    $scope.upper = function(){
+      var upCase = $filter('uppercase');
+      $scope.name = upCase($scope.name);
+    };
+  }
 })();
