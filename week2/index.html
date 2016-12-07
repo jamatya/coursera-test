@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="MsgApp">
+  <head>
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>body {font-size: 1.3em;}</style>
+    <title></title>
+  </head>
+  <body>
+    <h1></h1>
+    <div ng-controller="MsgCtrl">
+      {{sayMessage()}}<br/>
+      {{stateOfBeing}}
+      <button ng-click="feedMe();">Feed Meee </button>
+
+      Cost: {{feedCost | currency}}
+    </div>
+  </body>
+</html>
