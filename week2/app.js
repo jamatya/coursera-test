@@ -3,7 +3,8 @@
 
     angular.module('MsgApp', [])
     .controller('MsgCtrl', MsgCtrl)
-    .filter('loves', LovesFilter);
+    .filter('loves', LovesFilter)
+    .filter('truth', TruthFilter);
 
     MsgCtrl.$inject = ['$scope', '$filter', 'lovesFilter'];
     function MsgCtrl($scope, $filter, lovesFilter){
@@ -34,5 +35,13 @@
         input = input.replace("likes", "loves");
         return input;
       };
+    }
+
+    function TruthFilter(){
+      return function (input, target, replace){
+        input = input || "";
+        input = input.replace(target, replace);
+        return input;
+      }
     }
 })();
