@@ -1,6 +1,41 @@
 (function() { //iife: immediately-invoked function expression
   'use strict';
 
+  angular.module('CounterApp', [])
+  .controller('CounterCtrl', CounterCtrl);
+
+  CounterCtrl.$inject = ['$scope'];
+  function CounterCtrl($scope){
+    $scope.onceCounter = 0;
+    $scope.counter = 0;
+
+    $scope.showNumberOfWatchers = function(){
+        console.log("# of watchers:", $scope.$$watchersCount);
+    };
+
+    $scope.countOnce = function(){
+      $scope.onceCounter = 1;
+      //onsole.log("onceCounter: ", $scope.onceCounter);
+    };
+
+    $scope.upCounter = function(){
+      $scope.counter++;
+      //console.log("counter: ",$scope.counter);
+    };
+
+    $scope.$watch('onceCounter', function(newValue, oldValue){
+      console.log("onceCounter old Value", oldValue);
+        console.log("onceCounter new Value", newValue);
+    });
+
+    $scope.$watch('counter', function(newValue, oldValue){
+      console.log("counter old Value", oldValue);
+      console.log("counter new Value", newValue);
+    });
+  }
+
+    /*
+    //Custom Filter
     angular.module('MsgApp', [])
     .controller('MsgCtrl', MsgCtrl)
     .filter('loves', LovesFilter)
@@ -43,5 +78,5 @@
         input = input.replace(target, replace);
         return input;
       }
-    }
+    }*/
 })();
