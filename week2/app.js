@@ -1,28 +1,38 @@
 (function() { //iife: immediately-invoked function expression
   'use strict';
 
-  angular.module('BindingApp', [])
-  .controller('BindingCtrl', BindingCtrl);
+  angular.module('ShoppingApp', [])
+  .controller('ShoppingCtrl', ShoppingCtrl);
 
-  BindingCtrl.$inject = ['$scope'];
-  function BindingCtrl($scope){
-    $scope.firstName = "Jen";
-    //$scope.fullName = "";
+  ShoppingCtrl.$inject = ['$scope'];
+  function ShoppingCtrl($scope){
+    $scope.shoppingList1 = ["Tea", "Coffee", "Milk","Juice"];
+    $scope.shoppingList2 = [
+      {
+        name: "Tea",
+        quantity : 3
+      },
+      {
+        name: "Coffee",
+        quantity : 1
+      },
+      {
+        name: "Milk",
+        quantity : 2
+      },
+      {
+        name: "Cookies",
+        quantity : 2
+      }
+    ];
 
-    $scope.showNumberOfWatchers = function(){
-      console.log("# of watchers: ", $scope.$$watchersCount);
-    };
+    $scope.addToList = function(){
+      var newItem = {
+        name: $scope.newItemName,
+        quantity: $scope.newItemQty
+      };
 
-    $scope.setFullName = function(){
-      $scope.fullName = $scope.firstName + " " + "A";
-    };
-
-    $scope.logFirstName = function(){
-      console.log("First Name is:" + $scope.firstName);
-    };
-
-    $scope.logFullName = function(){
-      console.log("Full Name is:", $scope.fullName);
+      $scope.shoppingList2.push(newItem);
     };
   }
 })();

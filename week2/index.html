@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="BindingApp">
+<html ng-app="ShoppingApp">
   <head>
     <meta charset="utf-8">
     <script src="angular.min.js"></script>
@@ -7,19 +7,25 @@
     <style>body {font-size: 1.3em;}</style>
     <title></title>
   </head>
-  <body ng-controller="BindingCtrl">
-    <h1>2-way, 1-way, and 1-time binding</h1>
-    <div>
-      <button ng-click="showNumberOfWatchers()">Log # of Watchers</button>
-      <button ng-click="setFullName()">Set Full Name</button><br>
-
-      Full name is : {{ :: fullName }}<br>
-      <button ng-click="logFirstName()">Log First Name</button><br>
-      <button ng-click="logFullName()">Log Full Name</button><br>
-
-      <div>
-        <input type="text" ng-model="firstName">
-      </div>
-    </div>
+  <body ng-controller="ShoppingCtrl">
+    <h1>ng-repeat</h1>
+    <h3>List 1</h3>
+    <ul>
+      <li ng-repeat="item in shoppingList1">{{item}}</li>
+    </ul>
+    <br>
+    <h3>List 2</h3>
+    <ul>
+      <li ng-repeat="item in shoppingList2">Buy {{item.quantity}} of {{item.name}}</li>
+    </ul>
+    <br>
+    <h3>List 3</h3>
+    <input type="text" ng-model="shoppingList2[0].quantity">
+    <ul>
+      <li ng-repeat="item in shoppingList2">{{$index + 1}}. Buy {{item.quantity}} of {{item.name}}</li>
+    </ul>
+    <input type="text" ng-model="newItemName" placeholder="item name"/>
+    <input type="text" ng-model="newItemQty" placeholder="item quantity"/>
+    <button ng-click="addToList()">Add to List</button>
   </body>
 </html>
