@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="CounterApp">
+<html ng-app="BindingApp">
   <head>
     <meta charset="utf-8">
     <script src="angular.min.js"></script>
@@ -7,27 +7,19 @@
     <style>body {font-size: 1.3em;}</style>
     <title></title>
   </head>
-  <body>
-    <h1>The Digest Cycle</h1>
-    <div ng-controller="CounterCtrl">
+  <body ng-controller="BindingCtrl">
+    <h1>2-way, 1-way, and 1-time binding</h1>
+    <div>
+      <button ng-click="showNumberOfWatchers()">Log # of Watchers</button>
+      <button ng-click="setFullName()">Set Full Name</button><br>
+
+      Full name is : {{ :: fullName }}<br>
+      <button ng-click="logFirstName()">Log First Name</button><br>
+      <button ng-click="logFullName()">Log Full Name</button><br>
+
       <div>
-        <button ng-click="upCounter()">Increment Counter</button>
-      </div>
-      <div>
-        Regular counter: {{counter}}
+        <input type="text" ng-model="firstName">
       </div>
     </div>
-    <!--
-    <h1>Custom Filter</h1>
-    <div ng-controller="MsgCtrl">
-      Original: {{sayMessage()}} <br>
-      Loves: {{sayLovesMessage()}} <br>
-      Truth: {{sayLovesMessage() | truth :'healthy':'cookie'}} <br>
-      Big Truth:{{sayLovesMessage() | truth :'healthy':'cookie'| uppercase}} <br>
-      {{stateOfBeing}}
-      <button ng-click="feedMe();">Feed Meee </button>
-
-      Cost: {{feedCost | currency}}
-    </div>-->
   </body>
 </html>
