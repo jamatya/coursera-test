@@ -10,8 +10,9 @@
   <body ng-controller="ShoppingCtrl">
     <h1>ng-repeat</h1>
     <h3>List 1</h3>
+    <input type="text" ng-model="search">
     <ul>
-      <li ng-repeat="item in shoppingList1">{{item}}</li>
+      <li ng-repeat="item in shoppingList1 | filter: search">{{item}}</li>
     </ul>
     <br>
     <h3>List 2</h3>

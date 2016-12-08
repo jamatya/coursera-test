@@ -6,7 +6,7 @@
 
   ShoppingCtrl.$inject = ['$scope'];
   function ShoppingCtrl($scope){
-    $scope.shoppingList1 = ["Tea", "Coffee", "Milk","Juice"];
+    $scope.shoppingList1 = ["Tea", "Coffee", "Milk","Juice", "Cookies", "Chips", "Cookies Icecream"];
     $scope.shoppingList2 = [
       {
         name: "Tea",
